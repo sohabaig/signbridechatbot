@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import LogoImage from "../assets/logo.png"; // Ensure logo is placed here
+import LogoImage from "../assets/logo.png"; 
 
 const Header = ({ onBack }) => {
   return (
