@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Header from "./components/Header";
+import CameraView from "./components/CameraView";
+import "./App.css";
 
 function App() {
+  const [cameraEnabled, setCameraEnabled] = useState(false);
+  const [translatedText, setTranslatedText] = useState("");
+
+  // Toggle the camera on/off
+  const toggleCamera = () => setCameraEnabled(!cameraEnabled);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* Header */}
+      <Header onBack={() => console.log("Back button clicked")} />
+
+      {/* Main content */}
+      <CameraView
+        cameraEnabled={cameraEnabled}
+        translatedText={translatedText}
+        toggleCamera={toggleCamera}
+        setTranslatedText={setTranslatedText}
+      />
     </div>
   );
 }
