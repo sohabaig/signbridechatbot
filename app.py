@@ -3,6 +3,7 @@ import random
 
 app = Flask(__name__)
 # need secret key?
+app.secret_key = "temp-key"
 
 alphabet = list("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
 
