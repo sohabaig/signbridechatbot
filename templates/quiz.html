@@ -15,13 +15,12 @@
             <h2 class="page-title">Basics of ASL</h2>
             <div class="camera-slot">
                 <div class="prompt-box" id="current-letter">Sign the letter: {{ current_letter }}</div>
-                <p style="margin-bottom: 20px;">Turn on your camera to get started!</p>
-<p>Make sure to enable camera permissions</p>
-
+                <div class="prediction-box" id="prediction-box">
+                    Prediction: <span id="predicted-letter">None</span> 
+                    (Confidence: <span id="confidence-score">0.00</span>)
+                </div>
+                <img src="/video_feed" alt="Camera feed">
             </div>            
-            <div class="camera-btn">
-                <button id="submit-btn">Verify Sign</button>
-            </div>
             <p id="score">Score: {{ score }}</p>
             <div id="feedback" class="feedback"></div>
 

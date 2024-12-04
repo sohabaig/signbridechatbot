@@ -1,52 +1,32 @@
-window.onload = function () {
-    const feedback = document.getElementById("feedback");
-    const score = document.getElementById("score");
-    const currentLetter = document.getElementById("current-letter");
-
-    // trying to force reset score
-    feedback.textContent = "";
-    score.textContent = "Score: 0";
-    
-    console.log("Reset complete:", {
-        feedback: feedback.textContent,
-        score: score.textContent,
-        currentLetter: currentLetter.textContent
-    });
-};
-
-document.getElementById("submit-btn").addEventListener("click", async () => {
-    const feedback = document.getElementById("feedback");
-    const currentLetter = document.getElementById("current-letter");
-    const score = document.getElementById("score");
-
+async function pollPrediction() {
     try {
-        feedback.textContent = "";
-
-        const response = await fetch("/verify", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        });
-
+        const response = await fetch("/prediction");
         const result = await response.json();
-        console.log("Server response:", result);
 
-        if (result.success) {
-            if (result.completed) {
-                feedback.textContent = `Quiz Complete! Final Score: ${result.score}`;
-                score.textContent = `Score: ${result.score}`;
-                currentLetter.textContent = `Sign the letter: ${result.current_letter}`;
-            } else {
-                feedback.textContent = "Correct!";
-                score.textContent = `Score: ${result.score}`;
-                currentLetter.textContent = `Sign the letter: ${result.current_letter}`;
+        const predictedLetter = result.prediction || "None";
+        const confidenceScore = result.confidence || 0.0;
+
+        document.getElementById("predicted-letter").textContent = predictedLetter;
+        document.getElementById("confidence-score").textContent = confidenceScore.toFixed(2);
+
+        const currentLetterElement = document.getElementById("current-letter");
+        const currentLetter = currentLetterElement.textContent.replace("Sign the letter: ", "");
+
+        if (predictedLetter === currentLetter) {
+            const feedback = document.getElementById("feedback");
+            feedback.textContent = "Correct!";
+
+            const verifyResponse = await fetch("/verify", { method: "POST" });
+            const verifyResult = await verifyResponse.json();
+
+            if (verifyResult.success) {
+                currentLetterElement.textContent = `Sign the letter: ${verifyResult.current_letter}`;
+                document.getElementById("score").textContent = `Score: ${verifyResult.score}`;
             }
-        } else {
-            feedback.textContent = "Incorrect, try again!";
         }
     } catch (error) {
-        console.error("Error during verification:", error);
-        feedback.textContent = "An error occurred. Please try again.";
+        console.error("Error fetching prediction:", error);
     }
-});
+}
+
+setInterval(pollPrediction, 1000);
