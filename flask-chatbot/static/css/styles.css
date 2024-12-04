@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px; 
+    padding: 5px 10px; 
+    background-color: #ffffff;
+    border-bottom: none;
+    box-shadow: none;
+}
+
+.logo {
+    height: 40px;
+    width: auto;
+    margin-right: 5px;
+}
+
+.header h1 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 28px; 
+    color: #333333;
+    margin: 0;
+}
+
+.main-content {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-title {
+    font-size: 32px; 
+    font-weight: 700;
+    color: #333333;
+    margin-top: 5px; 
+    margin-bottom: 20px; 
+}
+
+.start-quiz-btn {
+    margin-top: 20px; 
+}
+
+.camera-slot {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    width: 1000px; 
+    height: 600px;
+    margin: 20px auto;
+    border: 2px solid #4A53FF;
+    border-radius: 10px;
+    background-color: white; 
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+    color: #4A53FF;
+    text-align: center; 
+}
+
+
+
+.camera-slot > p {
+    display: block !important; 
+    margin-bottom: 20px; 
+    margin-top: 0; 
+}
+
+.prompt-box {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #4A53FF;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: bold;
+    z-index: 2;
+}
+
+.camera-btn {
+    margin-top: 20px;
+}
+
+button {
+    font-family: 'Quicksand', sans-serif; 
+    background-color: #4A53FF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+button:hover {
+    background-color: #333333;
+}
+
+.back-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #4A53FF;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.feedback {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #6CC57A;
+}
+
+.score {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+    margin-top: 20px;
+    font-size: 18px;
+    color: #6CC57A;
+}
